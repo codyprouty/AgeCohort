@@ -1,0 +1,436 @@
+﻿Date,SampleDay,Treatment,Colony,Bees,Area,Notes,Removed,Cumulative
+22-Oct-20,1,NControl,1,0,100,,20,20
+23-Oct-20,2,NControl,1,0,100,,20,40
+24-Oct-20,3,NControl,1,0,100,,20,60
+25-Oct-20,4,NControl,1,0,100,,20,80
+26-Oct-20,5,NControl,1,1,100,,20,100
+27-Oct-20,6,NControl,1,1,100,,20,120
+28-Oct-20,7,NControl,1,3,100,,20,140
+29-Oct-20,8,NControl,1,3,100,,20,160
+30-Oct-20,9,NControl,1,0,100,no bees on patty (marked or unmarked),20,180
+31-Oct-20,10,NControl,1,1,100,,20,200
+1-Nov-20,11,NControl,1,4,100,,20,220
+2-Nov-20,12,NControl,1,1,100,,20,240
+3-Nov-20,13,NControl,1,3,100,,20,260
+4-Nov-20,14,NControl,1,0,100,,20,280
+5-Nov-20,15,NControl,1,3,100,,19,299
+6-Nov-20,16,NControl,1,2,100,,20,319
+7-Nov-20,17,NControl,1,5,100,,20,339
+8-Nov-20,18,NControl,1,3,75,,20,359
+9-Nov-20,19,NControl,1,0,100,,20,379
+10-Nov-20,20,NControl,1,1,100,,20,399
+11-Nov-20,21,NControl,1,2,75,,20,419
+12-Nov-20,22,NControl,1,,,no sampling b/c hurricane,0,419
+13-Nov-20,23,NControl,1,1,75,,20,439
+14-Nov-20,24,NControl,1,0,75,,13,452
+15-Nov-20,25,NControl,1,0,75,,12,464
+16-Nov-20,26,NControl,1,0,75,,6,470
+17-Nov-20,27,NControl,1,0,75,,2,472
+18-Nov-20,28,NControl,1,0,75,,2,474
+19-Nov-20,,NControl,1,,,colony removed from study b/c no painted bees found for 2 days,0,474
+22-Oct-20,1,NControl,2,0,100,,20,20
+23-Oct-20,2,NControl,2,0,100,,20,40
+24-Oct-20,3,NControl,2,0,100,,20,60
+25-Oct-20,4,NControl,2,3,100,,20,80
+26-Oct-20,5,NControl,2,4,100,,20,100
+27-Oct-20,6,NControl,2,2,100,,20,120
+28-Oct-20,7,NControl,2,0,75,,20,140
+29-Oct-20,8,NControl,2,1,75,,20,160
+30-Oct-20,9,NControl,2,0,100,,20,180
+31-Oct-20,10,NControl,2,3,100,,20,200
+1-Nov-20,11,NControl,2,3,100,,20,220
+2-Nov-20,12,NControl,2,4,100,,18,238
+3-Nov-20,13,NControl,2,1,100,,20,258
+4-Nov-20,14,NControl,2,1,100,,20,278
+5-Nov-20,15,NControl,2,1,100,,20,298
+6-Nov-20,16,NControl,2,2,100,,20,318
+7-Nov-20,17,NControl,2,1,100,,20,338
+8-Nov-20,18,NControl,2,1,50,,19,357
+9-Nov-20,19,NControl,2,1,75,,19,376
+10-Nov-20,20,NControl,2,1,75,,19,395
+11-Nov-20,21,NControl,2,0,25,,20,415
+12-Nov-20,22,NControl,2,,,no sampling b/c hurricane,0,415
+13-Nov-20,23,NControl,2,0,25,,20,435
+14-Nov-20,24,NControl,2,0,25,,6,441
+15-Nov-20,25,NControl,2,0,100,,5,446
+16-Nov-20,26,NControl,2,0,100,,2,448
+17-Nov-20,27,NControl,2,0,100,,2,450
+18-Nov-20,28,NControl,2,0,100,,1,451
+19-Nov-20,,NControl,2,,,colony removed from study b/c no painted bees found for 2 days,0,451
+23-Oct-20,1,NControl,3,0,100,,20,20
+24-Oct-20,2,NControl,3,0,100,,20,40
+25-Oct-20,3,NControl,3,2,100,,20,60
+26-Oct-20,4,NControl,3,2,100,,20,80
+27-Oct-20,5,NControl,3,1,100,,20,100
+28-Oct-20,6,NControl,3,0,100,,20,120
+29-Oct-20,7,NControl,3,1,100,,20,140
+30-Oct-20,8,NControl,3,0,100,,20,160
+31-Oct-20,9,NControl,3,0,100,,20,180
+1-Nov-20,10,NControl,3,5,100,,20,200
+2-Nov-20,11,NControl,3,1,75,,20,220
+3-Nov-20,12,NControl,3,5,100,,19,239
+4-Nov-20,13,NControl,3,6,100,,20,259
+5-Nov-20,14,NControl,3,5,75,,20,279
+6-Nov-20,15,NControl,3,5,75,,20,299
+7-Nov-20,16,NControl,3,3,75,,20,319
+8-Nov-20,17,NControl,3,2,50,,20,339
+9-Nov-20,18,NControl,3,0,75,,19,358
+10-Nov-20,19,NControl,3,2,75,,20,378
+11-Nov-20,20,NControl,3,0,25,,20,398
+12-Nov-20,21,NControl,3,,,no sampling b/c hurricane,0,398
+13-Nov-20,22,NControl,3,0,25,,20,418
+14-Nov-20,23,NControl,3,0,25,,14,432
+15-Nov-20,24,NControl,3,0,100,,7,439
+16-Nov-20,25,NControl,3,0,100,,2,441
+17-Nov-20,26,NControl,3,0,100,,3,444
+18-Nov-20,27,NControl,3,0,100,,3,447
+19-Nov-20,28,NControl,3,0,100,,4,451
+21-Oct-20,1,treatment,4,0,100,,20,20
+22-Oct-20,2,treatment,4,0,100,,20,40
+23-Oct-20,3,treatment,4,0,100,,20,60
+24-Oct-20,4,treatment,4,0,100,,20,80
+25-Oct-20,5,treatment,4,2,100,,20,100
+26-Oct-20,6,treatment,4,2,100,,20,120
+27-Oct-20,7,treatment,4,3,100,,20,140
+28-Oct-20,8,treatment,4,2,100,,20,160
+29-Oct-20,9,treatment,4,1,100,,20,180
+30-Oct-20,10,treatment,4,0,100,,20,200
+31-Oct-20,11,treatment,4,0,100,,19,219
+1-Nov-20,12,treatment,4,5,100,,20,239
+2-Nov-20,13,treatment,4,1,100,,20,259
+3-Nov-20,14,treatment,4,5,100,,20,279
+4-Nov-20,15,treatment,4,1,100,,20,299
+5-Nov-20,16,treatment,4,0,100,,20,319
+6-Nov-20,17,treatment,4,1,100,,20,339
+7-Nov-20,18,treatment,4,4,75,,19,358
+8-Nov-20,19,treatment,4,1,75,,20,378
+9-Nov-20,20,treatment,4,2,100,,20,398
+10-Nov-20,21,treatment,4,2,75,,20,418
+11-Nov-20,22,treatment,4,1,50,,20,438
+12-Nov-20,23,treatment,4,,,no sampling b/c hurricane,0,438
+13-Nov-20,24,treatment,4,1,75,replenished,19,457
+14-Nov-20,25,treatment,4,0,100,,7,464
+15-Nov-20,26,treatment,4,1,100,,2,466
+16-Nov-20,27,treatment,4,0,100,,1,467
+17-Nov-20,28,treatment,4,0,100,,1,468
+18-Nov-20,,treatment,4,,,colony removed from study b/c no painted bees found for 2 days,0,
+19-Nov-20,,treatment,4,,,colony removed from study b/c no painted bees found for 2 days,0,
+21-Oct-20,1,treatment,5,0,100,,20,20
+22-Oct-20,2,treatment,5,0,100,,20,40
+23-Oct-20,3,treatment,5,1,100,,20,60
+24-Oct-20,4,treatment,5,1,100,,20,80
+25-Oct-20,5,treatment,5,6,100,,20,100
+26-Oct-20,6,treatment,5,1,100,,19,119
+27-Oct-20,7,treatment,5,4,100,,20,139
+28-Oct-20,8,treatment,5,7,75,,20,159
+29-Oct-20,9,treatment,5,4,75,replenished,20,179
+30-Oct-20,10,treatment,5,0,100,,19,198
+31-Oct-20,11,treatment,5,7,100,,19,217
+1-Nov-20,12,treatment,5,9,100,,20,237
+2-Nov-20,13,treatment,5,1,100,,20,257
+3-Nov-20,14,treatment,5,2,100,,20,277
+4-Nov-20,15,treatment,5,1,100,,20,297
+5-Nov-20,16,treatment,5,6,75,,19,316
+6-Nov-20,17,treatment,5,2,75,replenished,20,336
+7-Nov-20,18,treatment,5,2,100,,20,356
+8-Nov-20,19,treatment,5,2,75,,20,376
+9-Nov-20,20,treatment,5,1,100,,19,395
+10-Nov-20,21,treatment,5,1,75,,20,415
+11-Nov-20,22,treatment,5,0,25,,20,435
+12-Nov-20,23,treatment,5,,,no sampling b/c hurricane,0,435
+13-Nov-20,24,treatment,5,0,<25,replenished,14,449
+14-Nov-20,25,treatment,5,0,100,,5,454
+15-Nov-20,26,treatment,5,0,100,,5,459
+16-Nov-20,27,treatment,5,0,100,,1,460
+17-Nov-20,28,treatment,5,0,100,,0,460
+18-Nov-20,,treatment,5,,,colony removed from study b/c no painted bees found for 2 days,0,460
+19-Nov-20,,treatment,5,,,colony removed from study b/c no painted bees found for 2 days,0,460
+22-Oct-20,1,treatment,6,0,100,,20,20
+23-Oct-20,2,treatment,6,0,100,,20,40
+24-Oct-20,3,treatment,6,1,100,,20,60
+25-Oct-20,4,treatment,6,3,100,,20,80
+26-Oct-20,5,treatment,6,1,100,,20,100
+27-Oct-20,6,treatment,6,4,100,,20,120
+28-Oct-20,7,treatment,6,1,100,,20,140
+29-Oct-20,8,treatment,6,1,100,,20,160
+30-Oct-20,9,treatment,6,0,100,,20,180
+31-Oct-20,10,treatment,6,4,100,,20,200
+1-Nov-20,11,treatment,6,5,100,,20,220
+2-Nov-20,12,treatment,6,5,100,,20,240
+3-Nov-20,13,treatment,6,0,75,,19,259
+4-Nov-20,14,treatment,6,4,75,,20,279
+5-Nov-20,15,treatment,6,3,75,,20,299
+6-Nov-20,16,treatment,6,4,75,replenished,20,319
+7-Nov-20,17,treatment,6,8,100,,20,339
+8-Nov-20,18,treatment,6,4,100,,20,359
+9-Nov-20,19,treatment,6,6,100,,20,379
+10-Nov-20,20,treatment,6,4,75,,20,399
+11-Nov-20,21,treatment,6,4,100,,20,419
+12-Nov-20,22,treatment,6,,,no sampling b/c hurricane,0,419
+13-Nov-20,23,treatment,6,2,75,replenished,20,439
+14-Nov-20,24,treatment,6,1,100,,18,457
+15-Nov-20,25,treatment,6,1,100,,14,471
+16-Nov-20,26,treatment,6,0,100,,13,484
+17-Nov-20,27,treatment,6,0,100,,3,487
+18-Nov-20,28,treatment,6,0,100,,2,489
+19-Nov-20,,treatment,6,,,colony removed from study b/c no painted bees found for 2 days,0,489
+23-Oct-20,1,treatment,7,0,100,,20,20
+24-Oct-20,2,treatment,7,0,100,,20,40
+25-Oct-20,3,treatment,7,1,100,,20,60
+26-Oct-20,4,treatment,7,1,100,,20,80
+27-Oct-20,5,treatment,7,2,100,,20,100
+28-Oct-20,6,treatment,7,2,100,,20,120
+29-Oct-20,7,treatment,7,1,100,,20,140
+30-Oct-20,8,treatment,7,0,100,,20,160
+31-Oct-20,9,treatment,7,0,100,,20,180
+1-Nov-20,10,treatment,7,2,100,,20,200
+2-Nov-20,11,treatment,7,0,100,,20,220
+3-Nov-20,12,treatment,7,2,75,,19,239
+4-Nov-20,13,treatment,7,1,75,,20,259
+5-Nov-20,14,treatment,7,4,75,,19,278
+6-Nov-20,15,treatment,7,1,50,replenished,20,298
+7-Nov-20,16,treatment,7,5,100,,20,318
+8-Nov-20,17,treatment,7,3,200,,20,338
+9-Nov-20,18,treatment,7,7,100,,20,358
+10-Nov-20,19,treatment,7,4,75,,20,378
+11-Nov-20,20,treatment,7,3,75,,20,398
+12-Nov-20,21,treatment,7,,,no sampling b/c hurricane,0,398
+13-Nov-20,22,treatment,7,0,50,replenished,20,418
+14-Nov-20,23,treatment,7,0,100,,20,438
+15-Nov-20,24,treatment,7,3,100,,20,458
+16-Nov-20,25,treatment,7,0,100,,20,478
+17-Nov-20,26,treatment,7,1,100,,20,498
+18-Nov-20,27,treatment,7,0,100,,0,498
+19-Nov-20,28,treatment,7,0,75,,5,503
+23-Oct-20,1,treatment,8,0,100,,20,20
+24-Oct-20,2,treatment,8,0,100,,20,40
+25-Oct-20,3,treatment,8,0,100,,20,60
+26-Oct-20,4,treatment,8,0,100,,20,80
+27-Oct-20,5,treatment,8,0,75,,20,100
+28-Oct-20,6,treatment,8,1,50,,20,120
+29-Oct-20,7,treatment,8,0,50,replenished,20,140
+30-Oct-20,8,treatment,8,1,100,,20,160
+31-Oct-20,9,treatment,8,1,100,,20,180
+1-Nov-20,10,treatment,8,1,100,,20,200
+2-Nov-20,11,treatment,8,1,100,,20,220
+3-Nov-20,12,treatment,8,1,75,,20,240
+4-Nov-20,13,treatment,8,1,75,,19,259
+5-Nov-20,14,treatment,8,2,50,,20,279
+6-Nov-20,15,treatment,8,0,50,replenished to 75%,20,299
+7-Nov-20,16,treatment,8,1,75,,20,319
+8-Nov-20,17,treatment,8,3,50,,20,339
+9-Nov-20,18,treatment,8,1,50,,20,359
+10-Nov-20,19,treatment,8,0,25,,20,379
+11-Nov-20,20,treatment,8,0,<25,,20,399
+12-Nov-20,21,treatment,8,,,no sampling b/c hurricane,0,399
+13-Nov-20,22,treatment,8,1,<25,replenished,20,419
+14-Nov-20,23,treatment,8,0,100,,20,439
+15-Nov-20,24,treatment,8,0,100,,19,458
+16-Nov-20,25,treatment,8,1,100,,20,478
+17-Nov-20,26,treatment,8,0,100,,19,497
+18-Nov-20,27,treatment,8,0,75,,6,503
+19-Nov-20,28,treatment,8,0,100,,2,505
+23-Oct-20,1,treatment,9,0,100,,20,20
+24-Oct-20,2,treatment,9,1,100,,20,40
+25-Oct-20,3,treatment,9,0,100,,20,60
+26-Oct-20,4,treatment,9,2,100,,20,80
+27-Oct-20,5,treatment,9,7,75,,20,100
+28-Oct-20,6,treatment,9,3,50,,19,119
+29-Oct-20,7,treatment,9,0,25,replenished,20,139
+30-Oct-20,8,treatment,9,0,100,,20,159
+31-Oct-20,9,treatment,9,3,100,,20,179
+1-Nov-20,10,treatment,9,4,100,,20,199
+2-Nov-20,11,treatment,9,0,100,,20,219
+3-Nov-20,12,treatment,9,2,75,,20,239
+4-Nov-20,13,treatment,9,0,75,,19,258
+5-Nov-20,14,treatment,9,3,75,,20,278
+6-Nov-20,15,treatment,9,4,50,,20,298
+7-Nov-20,16,treatment,9,3,50,,19,317
+8-Nov-20,17,treatment,9,1,25,,18,335
+9-Nov-20,18,treatment,9,0,25,"running low on patty, but can't use workshop b/c covid; took small scoop of patty  (~quarter sized) from each other treatment colony to replenish this colony",20,355
+10-Nov-20,19,treatment,9,3,25,,20,375
+11-Nov-20,20,treatment,9,1,<25,,19,394
+12-Nov-20,21,treatment,9,,,no sampling b/c hurricane,0,394
+13-Nov-20,22,treatment,9,0,<25,replenished,20,414
+14-Nov-20,23,treatment,9,3,100,,20,434
+15-Nov-20,24,treatment,9,1,100,,20,454
+16-Nov-20,25,treatment,9,0,100,,18,472
+17-Nov-20,26,treatment,9,0,100,,10,482
+18-Nov-20,27,treatment,9,0,75,,4,486
+19-Nov-20,28,treatment,9,0,100,,4,490
+22-Oct-20,1,CControl,10,0,100,,20,20
+23-Oct-20,2,CControl,10,0,100,,20,40
+24-Oct-20,3,CControl,10,0,100,,20,60
+25-Oct-20,4,CControl,10,0,100,,20,80
+26-Oct-20,5,CControl,10,0,100,,19,99
+27-Oct-20,6,CControl,10,0,100,,20,119
+28-Oct-20,7,CControl,10,0,100,,20,139
+29-Oct-20,8,CControl,10,0,100,,20,159
+30-Oct-20,9,CControl,10,0,100,,20,179
+31-Oct-20,10,CControl,10,0,100,,18,197
+1-Nov-20,11,CControl,10,0,100,,19,216
+2-Nov-20,12,CControl,10,0,100,,19,235
+3-Nov-20,13,CControl,10,0,100,,20,255
+4-Nov-20,14,CControl,10,0,100,,20,275
+5-Nov-20,15,CControl,10,0,100,,20,295
+6-Nov-20,16,CControl,10,0,100,,20,315
+7-Nov-20,17,CControl,10,0,100,,20,335
+8-Nov-20,18,CControl,10,0,100,,20,355
+9-Nov-20,19,CControl,10,0,100,,20,375
+10-Nov-20,20,CControl,10,0,100,,20,395
+11-Nov-20,21,CControl,10,0,100,,20,415
+12-Nov-20,22,CControl,10,,,no sampling b/c hurricane,0,415
+13-Nov-20,23,CControl,10,0,100,,20,435
+14-Nov-20,24,CControl,10,0,100,,15,450
+15-Nov-20,25,CControl,10,0,100,,13,463
+16-Nov-20,26,CControl,10,0,100,,7,470
+17-Nov-20,27,CControl,10,0,100,,4,474
+18-Nov-20,28,CControl,10,0,100,,4,478
+19-Nov-20,,CControl,10,,,colony removed from study b/c no painted bees found for 2 days,0,478
+21-Oct-20,1,CControl,11,0,100,,20,20
+22-Oct-20,2,CControl,11,0,100,,20,40
+23-Oct-20,3,CControl,11,0,100,,19,59
+24-Oct-20,4,CControl,11,0,100,,20,79
+25-Oct-20,5,CControl,11,0,100,,20,99
+26-Oct-20,6,CControl,11,0,100,,20,119
+27-Oct-20,7,CControl,11,0,100,,20,139
+28-Oct-20,8,CControl,11,0,100,,20,159
+29-Oct-20,9,CControl,11,0,100,,19,178
+30-Oct-20,10,CControl,11,0,100,,20,198
+31-Oct-20,11,CControl,11,0,100,,20,218
+1-Nov-20,12,CControl,11,0,100,,20,238
+2-Nov-20,13,CControl,11,0,100,,20,258
+3-Nov-20,14,CControl,11,0,100,,20,278
+4-Nov-20,15,CControl,11,0,100,,20,298
+5-Nov-20,16,CControl,11,0,100,,20,318
+6-Nov-20,17,CControl,11,0,100,,19,337
+7-Nov-20,18,CControl,11,0,100,,20,357
+8-Nov-20,19,CControl,11,0,100,,6,363
+9-Nov-20,20,CControl,11,0,100,,7,370
+10-Nov-20,21,CControl,11,0,100,,1,371
+11-Nov-20,22,CControl,11,0,100,,0,371
+12-Nov-20,23,CControl,11,,,no sampling b/c hurricane,0,371
+13-Nov-20,24,CControl,11,,,colony removed from study b/c no painted bees found for 2 days,0,371
+14-Nov-20,25,CControl,11,,,colony removed from study b/c no painted bees found for 2 days,1,372
+15-Nov-20,26,CControl,11,,,colony removed from study b/c no painted bees found for 2 days,0,372
+16-Nov-20,27,CControl,11,,,colony removed from study b/c no painted bees found for 2 days,0,372
+17-Nov-20,28,CControl,11,,,colony removed from study b/c no painted bees found for 2 days,0,372
+18-Nov-20,,CControl,11,,,colony removed from study b/c no painted bees found for 2 days,0,372
+19-Nov-20,,CControl,11,,,colony removed from study b/c no painted bees found for 2 days,0,372
+22-Oct-20,1,CControl,12,0,100,,20,20
+23-Oct-20,2,CControl,12,0,100,,20,40
+24-Oct-20,3,CControl,12,0,100,,20,60
+25-Oct-20,4,CControl,12,0,100,,20,80
+26-Oct-20,5,CControl,12,0,100,,20,100
+27-Oct-20,6,CControl,12,0,100,,20,120
+28-Oct-20,7,CControl,12,0,100,,20,140
+29-Oct-20,8,CControl,12,0,100,,20,160
+30-Oct-20,9,CControl,12,0,100,,20,180
+31-Oct-20,10,CControl,12,0,100,,19,199
+1-Nov-20,11,CControl,12,0,100,,20,219
+2-Nov-20,12,CControl,12,0,100,,18,237
+3-Nov-20,13,CControl,12,0,100,,20,257
+4-Nov-20,14,CControl,12,0,100,,18,275
+5-Nov-20,15,CControl,12,0,100,,19,294
+6-Nov-20,16,CControl,12,0,100,,19,313
+7-Nov-20,17,CControl,12,0,100,,20,333
+8-Nov-20,18,CControl,12,0,100,,15,348
+9-Nov-20,19,CControl,12,0,100,,12,360
+10-Nov-20,20,CControl,12,0,100,,8,368
+11-Nov-20,21,CControl,12,0,100,,4,372
+12-Nov-20,22,CControl,12,,,no sampling b/c hurricane,0,372
+13-Nov-20,23,CControl,12,0,100,,3,375
+14-Nov-20,24,CControl,12,0,100,,0,375
+15-Nov-20,25,CControl,12,0,100,,0,375
+16-Nov-20,26,CControl,12,,,colony removed from study b/c no painted bees found for 2 days,0,375
+17-Nov-20,27,CControl,12,,,colony removed from study b/c no painted bees found for 2 days,0,375
+18-Nov-20,28,CControl,12,,,colony removed from study b/c no painted bees found for 2 days,0,375
+19-Nov-20,,CControl,12,,,colony removed from study b/c no painted bees found for 2 days,0,375
+21-Oct-20,1,PControl,13,0,100,,20,20
+22-Oct-20,2,PControl,13,1,100,,20,40
+23-Oct-20,3,PControl,13,0,100,,20,60
+24-Oct-20,4,PControl,13,1,100,,20,80
+25-Oct-20,5,PControl,13,1,100,,20,100
+26-Oct-20,6,PControl,13,3,75,,20,120
+27-Oct-20,7,PControl,13,2,25,,19,139
+28-Oct-20,8,PControl,13,2,100,,20,159
+29-Oct-20,9,PControl,13,3,100,,19,178
+30-Oct-20,10,PControl,13,0,100,,20,198
+31-Oct-20,11,PControl,13,1,75,,20,218
+1-Nov-20,12,PControl,13,1,25,Fondant size of a quarter,20,238
+2-Nov-20,13,PControl,13,0,100,,20,258
+3-Nov-20,14,PControl,13,2,100,,20,278
+4-Nov-20,15,PControl,13,1,100,,19,297
+5-Nov-20,16,PControl,13,2,100,,20,317
+6-Nov-20,17,PControl,13,3,75,,19,336
+7-Nov-20,18,PControl,13,4,25,,20,356
+8-Nov-20,19,PControl,13,3,100,,19,375
+9-Nov-20,20,PControl,13,3,100,,19,394
+10-Nov-20,21,PControl,13,3,75,,20,414
+11-Nov-20,22,PControl,13,0,100,,20,434
+12-Nov-20,23,PControl,13,,,no sampling b/c hurricane,0,434
+13-Nov-20,24,PControl,13,1,100,,17,451
+14-Nov-20,25,PControl,13,0,100,,4,455
+15-Nov-20,26,PControl,13,0,100,,0,455
+16-Nov-20,27,PControl,13,0,75,,2,457
+17-Nov-20,28,PControl,13,0,50,,0,457
+18-Nov-20,,PControl,13,,,colony removed from study b/c no painted bees found for 2 days,0,457
+19-Nov-20,,PControl,13,,,colony removed from study b/c no painted bees found for 2 days,0,457
+21-Oct-20,1,PControl,14,0,100,,20,20
+22-Oct-20,2,PControl,14,0,100,,20,40
+23-Oct-20,3,PControl,14,0,100,,20,60
+24-Oct-20,4,PControl,14,0,100,,20,80
+25-Oct-20,5,PControl,14,,0,,20,100
+26-Oct-20,6,PControl,14,2,50,,20,120
+27-Oct-20,7,PControl,14,2,100,,20,140
+28-Oct-20,8,PControl,14,2,50,,20,160
+29-Oct-20,9,PControl,14,2,100,replenished,20,180
+30-Oct-20,10,PControl,14,0,100,,20,200
+31-Oct-20,11,PControl,14,0,25,,20,220
+1-Nov-20,12,PControl,14,1,100,,20,240
+2-Nov-20,13,PControl,14,0,100,,20,260
+3-Nov-20,14,PControl,14,0,75,,19,279
+4-Nov-20,15,PControl,14,2,50,,18,297
+5-Nov-20,16,PControl,14,4,100,,20,317
+6-Nov-20,17,PControl,14,,,no data,20,337
+7-Nov-20,18,PControl,14,,0,fondant almost gone,20,357
+8-Nov-20,19,PControl,14,1,100,,20,377
+9-Nov-20,20,PControl,14,5,50,,20,397
+10-Nov-20,21,PControl,14,2,100,,20,417
+11-Nov-20,22,PControl,14,1,100,,20,437
+12-Nov-20,23,PControl,14,,,no sampling b/c hurricane,0,437
+13-Nov-20,24,PControl,14,1,100,,20,457
+14-Nov-20,25,PControl,14,0,100,,15,472
+15-Nov-20,26,PControl,14,,0,patty almost gone,3,475
+16-Nov-20,27,PControl,14,0,100,,2,477
+17-Nov-20,28,PControl,14,0,50,,1,478
+18-Nov-20,,PControl,14,,,colony removed from study b/c no painted bees found for 2 days,0,478
+19-Nov-20,,PControl,14,,,colony removed from study b/c no painted bees found for 2 days,0,478
+23-Oct-20,1,PControl,15,0,100,,20,20
+24-Oct-20,2,PControl,15,1,100,,20,40
+25-Oct-20,3,PControl,15,1,100,,19,59
+26-Oct-20,4,PControl,15,3,100,,20,79
+27-Oct-20,5,PControl,15,1,75,,20,99
+28-Oct-20,6,PControl,15,,0,,20,119
+29-Oct-20,7,PControl,15,1,100,,20,139
+30-Oct-20,8,PControl,15,0,100,,20,159
+31-Oct-20,9,PControl,15,1,100,,20,179
+1-Nov-20,10,PControl,15,2,50,,20,199
+2-Nov-20,11,PControl,15,0,100,,20,219
+3-Nov-20,12,PControl,15,0,50,,20,239
+4-Nov-20,13,PControl,15,1,75,,20,259
+5-Nov-20,14,PControl,15,0,100,,20,279
+6-Nov-20,15,PControl,15,3,100,,20,299
+7-Nov-20,16,PControl,15,0,100,,20,319
+8-Nov-20,17,PControl,15,2,100,,20,339
+9-Nov-20,18,PControl,15,,0,fondant replenished,20,359
+10-Nov-20,19,PControl,15,2,100,,20,379
+11-Nov-20,20,PControl,15,4,100,,20,399
+12-Nov-20,21,PControl,15,,,no sampling b/c hurricane,0,399
+13-Nov-20,22,PControl,15,2,25,,20,419
+14-Nov-20,23,PControl,15,2,100,,20,439
+15-Nov-20,24,PControl,15,0,100,,16,455
+16-Nov-20,25,PControl,15,0,50,,16,471
+17-Nov-20,26,PControl,15,0,<25,,6,477
+18-Nov-20,27,PControl,15,0,100,,6,483
+19-Nov-20,28,PControl,15,1,100,,1,484
