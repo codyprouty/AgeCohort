@@ -1,0 +1,459 @@
+---
+title: "EmilyPollen"
+output: html_document
+---
+
+```{r}
+BeeCounts <- read.csv("C:/Users/codyp/Desktop/WorkBackup/Research/HBREL/Emily/AgeCohort/BeeCounts.csv")
+names(BeeCounts)[1] <- "Date"
+DyeVisuals <- read.csv("C:/Users/codyp/Desktop/WorkBackup/Research/HBREL/Emily/AgeCohort/DyeVisuals.csv")
+Weather1 <- read.csv("C:/Users/codyp/Desktop/WorkBackup/Research/HBREL/Emily/AgeCohort/2020.csv")
+#Time coded this way makes it difficult to cut out unneeded times
+Weather2 <- subset(Weather1, Time == c("9:00:00"))
+Weather3 <- subset(Weather1, Time == c("10:00:00"))
+Weather4 <- subset(Weather1, Time == c("11:00:00"))
+Weather5 <- subset(Weather1, Time == c("12:00:00"))
+Weather <- rbind(Weather2,Weather3, Weather4,Weather5)
+#average weather variable by date over 4 hours bees were sampled.
+SoilTemp <- aggregate(SoilTemp~Date, data=Weather, FUN=mean)
+Temp60cm <- aggregate(Temp60cm~Date, data=Weather, FUN=mean)
+Temp2m <- aggregate(Temp2m~Date, data=Weather, FUN=mean)
+Temp10m <- aggregate(Tem10m~Date, data=Weather, FUN=mean)
+Humidity <- aggregate(Humidity~Date, data=Weather, FUN=mean)
+DPTemp <- aggregate(DPTemp~Date, data=Weather, FUN=mean)
+Rainfall <- aggregate(Rainfall~Date, data=Weather, FUN=mean)
+WindSp <- aggregate(WindSp~Date, data=Weather, FUN=mean)
+WindDir <- aggregate(WindDir~Date, data=Weather, FUN=mean)
+Radiation <- aggregate(Radiation~Date, data=Weather, FUN=mean)
+BeeCounts <- merge(BeeCounts,SoilTemp, by="Date")
+BeeCounts <- merge(BeeCounts,Temp60cm, by="Date")
+BeeCounts <- merge(BeeCounts,Temp2m, by="Date")
+BeeCounts <- merge(BeeCounts,Temp10m, by="Date")
+BeeCounts <- merge(BeeCounts,Humidity, by="Date")
+BeeCounts <- merge(BeeCounts,DPTemp, by="Date")
+BeeCounts <- merge(BeeCounts,Rainfall, by="Date")
+BeeCounts <- merge(BeeCounts,WindSp, by="Date")
+BeeCounts <- merge(BeeCounts,WindDir, by="Date")
+BeeCounts <- merge(BeeCounts,Radiation, by="Date")
+
+DyeVisuals <- merge(DyeVisuals, Temp2m, by="Date")
+DyeVisuals <- merge(DyeVisuals, Humidity, by="Date")
+DyeVisuals <- merge(DyeVisuals, SoilTemp, by="Date")
+DyeVisuals <- merge(DyeVisuals, Temp60cm, by="Date")
+DyeVisuals <- merge(DyeVisuals, Temp10m, by="Date")
+DyeVisuals <- merge(DyeVisuals, DPTemp, by="Date")
+DyeVisuals <- merge(DyeVisuals, Rainfall, by="Date")
+DyeVisuals <- merge(DyeVisuals, WindSp, by="Date")
+DyeVisuals <- merge(DyeVisuals, WindDir, by="Date")
+DyeVisuals <- merge(DyeVisuals, Radiation, by="Date")
+
+
+
+
+BeeCounts$Colony <- as.factor(BeeCounts$Colony)
+BeeCounts$SampleDay <- as.factor(BeeCounts$SampleDay)
+names(BeeCounts)[1] <- "Date"
+names(DyeVisuals)[2] <- "Treatment"
+DyeVisuals$Hive <- as.factor(DyeVisuals$Hive)
+DyeVisuals$SampleDay <- as.factor(DyeVisuals$SampleDay)
+
+BeeCounts2 <- reshape(BeeCounts, idvar="Colony", timevar="SampleDay", v.names="Bees", direction="wide")
+
+
+library(lmerTest)
+library(lsmeans)
+library(multcomp)
+library(car)
+library(brglm2)
+library(afex)
+```
+
+##Bee Counts Graph
+```{r}
+BC <- subset(BeeCounts, Bees > -1)
+
+tgcBC <- summarySE(BC, measurevar = "Bees", groupvars = c("Treatment", "SampleDay"))
+tgcBC <- summarySE(BC, measurevar = "Bees", groupvars = c("Treatment"))
+
+tgcTm <- summarySE(BC, measurevar = "Bees", groupvars = c("Treatment", "SampleDay"))
+
+
+
+Plot <- data.frame(Time=c("1", "2", "3", "4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28"), CControl = tgcBC[c(1:28), "Bees"], NControl = tgcBC[c(29:56), "Bees"], 
+                   PControl = tgcBC[c(57:84), "Bees"], Treatment = tgcBC[c(85:112), "Bees"])
+Plot
+
+png("NumberofBees.png", width=6, height=6, units="in", res=400)
+plot(.8:27.8, Plot[,2], xaxt="n", ylim=c(0,5), xlim=c(.6,28.4), type="b", pch=16, col="blue", xlab="Time", ylab="Number of Bees", cex=1.5, lty=4, cex.lab=1.5, lwd=2)
+lines(.9:27.9, Plot[,3], pch=17, col="darkgreen", type="b", cex=1.5,lty=5, lwd=2)
+lines(1.0:28.0, Plot[,4], pch=15, col="black", type="b", cex=1.5,lty=6, lwd=2)
+lines(1.1:28.1, Plot[,5], pch=18, col="red", type="b", cex=1.5,lty=7, lwd=2)
+axis(1, 1:28, labels=c("1", "2", "3", "4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28"))
+arrows(.8:27.8, Plot[,2]-tgcBC[c(1:28),"se"], .8:27.8, Plot[,2]+tgcBC[c(1:28), "se"], code=3, angle=90, length=0.05, lwd=2, col="blue")
+arrows(.9:27.9, Plot[,3]-tgcBC[c(29:56),"se"], .9:27.9, Plot[,3]+tgcBC[c(29:56), "se"], code=3, angle=90, length=0.05, lwd=2, col="darkgreen")
+arrows(1.0:28.0, Plot[,4]-tgcBC[c(57:84),"se"], 1.0:28.0, Plot[,4]+tgcBC[c(57:84), "se"], code=3, angle=90, length=0.05, lwd=2, col="black")
+arrows(1.1:28.1, Plot[,5]-tgcBC[c(85:112),"se"], 1.1:28.1, Plot[,5]+tgcBC[c(85:112), "se"], code=3, angle=90, length=0.05, lwd=2, col="red")
+legend("topright", c("Consumption Control", "Neg Control", "Pos Control", "Treatment"), col=c("blue", "darkgreen", "black", "red"), lty=c(4,5,6,7), title="Treatment", pch=c(16,17,15,18, cex=5))
+dev.off()
+
+
+png("NegControl.png", width=6, height=6, units="in", res=400)
+plot(.8:27.8, Plot[,3], xaxt="n", ylim=c(0,5), xlim=c(.6,28.4), type="b", pch=16, col="darkgreen", xlab="Time", ylab="Number of Bees", cex=1.5, lty=4, cex.lab=1.5, lwd=2)
+axis(1, 1:28, labels=c("1", "2", "3", "4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28"))
+arrows(.8:27.8, Plot[,3]-tgcBC[c(29:56),"se"], .8:27.8, Plot[,3]+tgcBC[c(29:56), "se"], code=3, angle=90, length=0.05, lwd=2, col="darkgreen")
+legend("topright", c( "Neg Control"), col=c("darkgreen"), lty=c(5), title="Treatment", pch=c(16,17,15,18, cex=5))
+dev.off()
+
+png("PosControl.png", width=6, height=6, units="in", res=400)
+plot(.8:27.8, Plot[,4], xaxt="n", ylim=c(0,5), xlim=c(.6,28.4), type="b", pch=16, col="black", xlab="Time", ylab="Number of Bees", cex=1.5, lty=4, cex.lab=1.5, lwd=2)
+axis(1, 1:28, labels=c("1", "2", "3", "4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28"))
+arrows(.8:27.8, Plot[,4]-tgcBC[c(57:84),"se"], .8:27.8, Plot[,4]+tgcBC[c(57:84), "se"], code=3, angle=90, length=0.05, lwd=2, col="black")
+legend("topright", c("Pos Control"), col=c("black"), lty=c(6), title="Treatment", pch=c(16,17,15,18, cex=5))
+dev.off()
+
+png("Treatment.png", width=6, height=6, units="in", res=400)
+plot(.8:27.8, Plot[,5], xaxt="n", ylim=c(0,5.6), xlim=c(.6,28.4), type="b", pch=16, col="red", xlab="Time", ylab="Number of Bees", cex=1.5, lty=4, cex.lab=1.5, lwd=2)
+axis(1, 1:28, labels=c("1", "2", "3", "4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28"))
+arrows(.8:27.8, Plot[,5]-tgcBC[c(85:112),"se"], .8:27.8, Plot[,5]+tgcBC[c(85:112), "se"], code=3, angle=90, length=0.05, lwd=2, col="red")
+dev.off()
+
+BCT <- subset(BC, Treatment == "treatment") 
+
+tgcBC <- summarySE(BCT, measurevar = "Temp60cm", groupvars = c("Age"))
+tgcBC1 <- summarySE(BCT, measurevar = "Bees", groupvars = c("Age"))
+
+
+png("Temp.png", width=6, height=6, units="in", res=400)
+plot(1:28, tgcBC4[,3], xaxt="n", ylim=c(10,30), xlim=c(.6,28.4), type="b", pch=16, col="red", xlab="Time", ylab="Temperature", cex=1.5, lty=4, cex.lab=1.5, lwd=2)
+axis(1, 1:28, labels=c("1", "2", "3", "4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28"))
+arrows(1:28, tgcBC4[,3]-tgcBC4[,5], 1:28, tgcBC4[,3]+tgcBC4[,5], code=3, angle=90, length=0.05, lwd=2, col="red")
+dev.off()
+
+png("Rainfall.png", width=6, height=6, units="in", res=400)
+plot(1:28, tgcBC4[,13], xaxt="n", ylim=c(0,.01), xlim=c(.6,28.4), type="b", pch=16, col="red", xlab="Time", ylab="Rainfall", cex=1.5, lty=4, cex.lab=1.5, lwd=2)
+axis(1, 1:28, labels=c("1", "2", "3", "4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28"))
+arrows(1:28, tgcBC4[,13]-tgcBC4[,15], 1:28, tgcBC4[,13]+tgcBC4[,15], code=3, angle=90, length=0.05, lwd=2, col="red")
+dev.off()
+
+png("Treatment.png", width=6, height=6, units="in", res=400)
+plot(1:28, tgcBC4[,8], xaxt="n", ylim=c(0,6), xlim=c(.6,28.4), type="b", pch=16, col="red", xlab="Time", ylab="Number of bees", cex=1.5, lty=4, cex.lab=1.5, lwd=2)
+axis(1, 1:28, labels=c("1", "2", "3", "4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28"))
+arrows(1:28, tgcBC4[,8]-tgcBC4[,10], 1:28, tgcBC4[,8]+tgcBC4[,10], code=3, angle=90, length=0.05, lwd=2, col="red")
+dev.off()
+
+
+
+```
+
+```{r}
+tgcBC1 <- summarySE(BC, measurevar = "Bees", groupvars = c("Treatment"))
+
+png("NumberofBeesRX.png", width=6, height=6, units="in", res=400)
+plot(1:4, tgcBC1[,3], xaxt="n", ylim=c(0,2), xlim=c(1,4), type="b", pch=16, col="blue", xlab="Treatment", ylab="Number of Bees", cex=1.5, lty=0, cex.lab=1.5, lwd=2)
+axis(1, 1:4, labels=c("Consump. Ctrl", "Neg. Ctrl", "Pos. Ctrl", "AP23"))
+arrows(1:4, tgcBC1[,3]-tgcBC1[c(1:4),"se"], 1:4, tgcBC1[,3]+tgcBC1[c(1:4), "se"], code=3, angle=90, length=0.05, lwd=2, col="blue")
+dev.off()
+
+```
+
+##Bee Counts Significance
+```{r}
+poisson <- fitdistr(BC4$Bees, "Poisson")
+qqp(BC4$Bees, "pois", lambda=poisson$estimate)
+
+qqp(BC4$Bees, "lnorm")
+
+
+#Weather variables on bee counts
+
+BCw <- mixed(Rainfall ~ Humidity + (1|Date), family = poisson(link="log"), data=BC2, method="LRT")
+BCw
+
+BCw <- glm(Bees ~ Radiation, family=poisson(link="log"), data= BC2)
+Anova(BCw) 
+
+png("Humidity.png", width=6, height=6, units="in", res=400)
+plot(BeeCounts$Humidity,BeeCounts$Bees,
+     xlab="Humidity", ylab="Bee Counts", pch=19,
+     abline(lm(BeeCounts$Bees~BeeCounts$Humidity), col="red"))
+dev.off()
+
+BCw <- glm(Bees ~ Temp2m, family=poisson(link="logit"), data= BeeCounts)
+BCw 
+
+png("Temperature.png", width=6, height=6, units="in", res=400)
+plot(BeeCounts$Temp2m,BeeCounts$Bees,
+     xlab="Temperature", ylab="Bee Counts", pch=19,
+     abline(lm(BeeCounts$Bees~BeeCounts$Temp2m), col="red"))
+dev.off()
+
+
+#Temp and rainfall significant
+
+BC1 <- subset(BeeCounts, Treatment != "CControl")
+BC4 <- subset(BC1, Bees > -1)
+BC4$SampleDay <- as.factor(BC4$SampleDay)
+
+BCs <- mixed(Bees ~ Cumulative + Treatment * SampleDay + (1|Date) + (1|Area) + (1|Colony), family=poisson(link="log"), data= BC4,method="LRT")
+BCs
+Anova(BCs)
+
+library(brglm2)
+BC5 <- subset(BeeCounts, Bees>-1)
+BC5$SampleDay <- as.factor(BC5$SampleDay)
+BC5$Colony <- as.factor(BC5$Colony)
+BCs1 <- glm(Bees ~ Temp2m + Treatment + Area + Colony, family=poisson(link="log"), data= BC5, method="brglmFit")
+BCs1
+Anova(BCs1)
+summary(BCs)
+
+BCsm <- 
+
+lsm<-lsmeans (BCs, list( ~ Treatment))
+cld(lsm)
+
+BC2 <- subset(BeeCounts, Treatment == "treatment")
+BC3 <- subset(BC2, Bees > -1)
+BC3$SampleDay <- as.factor(BC3$SampleDay)
+BCs <- mixed(Bees ~ Temp2m + SampleDay + (1|Date) + (1|Area) + (1|Colony) + (1|Cumulative) , family=poisson(link="log"), data= BC3, method="LRT")
+BCs
+
+BCs1 <- glmer(Bees ~ SampleDay + (1|Date) + (1|Area) + (1|Colony) + (1|Cumulative), family=poisson(link="log"), data= BC3)
+Anova(BCs1)
+
+BC3$SampleDay2 <- as.numeric(BC3$SampleDay)
+
+BCs2 <- glmer(Bees ~  Temp2m + SampleDay + (1|Date) + Area + (1|Colony), family=poisson(link="log"), data= BC3)
+Anova(BCs2)
+summary(BCs)
+
+BC3$Bees.t <- BC3$Bees + 1
+BCs2 <- glmer(Bees ~  Temp2m + SampleDay + (1|Date) + (1|Area) + (1|Colony) + (1|Cumulative), family=poisson(link="log"), data= BC3)
+Anova(BCs2)
+
+BC3$Colony <- as.factor(BC3$Colony)
+options(contrasts=c("contr.sum", "contr.poly"))
+BCs2 <- glm(Bees ~  Cumulative + Temp2m + SampleDay + Area + Colony, family=poisson(link="log"), data= BC3, method="brglmFit")
+Anova(BCs2)
+
+lsm<-lsmeans (BCs2, list( ~ SampleDay))
+cld(lsm)
+
+library(visreg)
+
+BCw1 <- subset(BeeCounts2, Treatment != "CControl")
+
+png("BeeCountsVisFactor.png", width=6, height=6, units="in", res=400)
+visreg(BCs2, "SampleDay")
+dev.off()
+```
+
+```{r}
+BC2$SampleDay <- as.factor(BC2$SampleDay)
+BC2$Colony <- as.factor(BC2$Colony)
+
+SoilTemp1 <- BeeCounts$SoilTemp
+Temp2m1 <- BeeCounts$Temp2m
+Temp10m1 <- BeeCounts$Tem10m
+Temp60cm1 <- BeeCounts$Temp60cm
+DPTemp1 <- BeeCounts$DPTemp
+Radiation1 <- BeeCounts$Radiation
+WindSp1 <- BeeCounts$WindSp
+WindDir1 <- BeeCounts$WindDir
+Humidity1 <- BeeCounts$Humidity
+Rainfall1 <- BeeCounts$Rainfall
+Bees <- BeeCounts$Bees
+Area <- BeeCounts$Area
+Cumulative <- BeeCounts$Cumulative
+SampleDay <- BeeCounts$SampleDay
+Colony <- BeeCounts$Colony
+Date <- BeeCounts$Date
+Treatment <-BeeCounts$Treatment
+Area <- BeeCounts$Area
+
+PCABees <- data.frame(Date, SampleDay, Colony, Treatment, Area, Cumulative, Bees, Temp2m1,Temp60cm1, Radiation1,Temp10m1, Humidity1,DPTemp1, Rainfall1, WindDir1)
+
+PCABees <- na.omit(PCABees)
+#sum(is.na(PCA))
+DRBees <- prcomp(PCABees[-c(1:7)], center = TRUE, scale = TRUE)
+head(DRBees$x)
+#there are my PCA
+PCAscoresBees <- data.frame(Date = PCABees$Date, SampleDay=PCABees$SampleDay, Colony=PCABees$Colony, Treatment=PCABees$Treatment, Area=PCABees$Area, Cumulative=PCABees$Cumulative, Bees=PCABees$Bees, PC1 = DRBees$x[,1], PC2 = DRBees$x[,2])
+
+PCA1POVBees <- DRBees$sdev^2/sum(DRBees$sdev^2)
+PCA1POVBees
+
+#PC1 explains 62.9% of variation
+
+SoilTemp2 <- DV1$SoilTemp
+Temp2m2 <- DV1$Temp2m
+Temp10m2 <- DV1$Tem10m
+Temp60cm2 <- DV1$Temp60cm
+DPTemp2 <- DV1$DPTemp
+Radiation2 <- DV1$Radiation
+WindSp2 <- DV1$WindSp
+WindDir2 <- DV1$WindDir
+Humidity2 <- DV1$Humidity
+Rainfall2 <- DV1$Rainfall
+SampleDay <- DV1$SampleDay
+Hive <- DV1$Hive
+Date <- DV1$Date
+Visual <- DV1$Visual1
+
+PCA <- data.frame(SampleDay, Date, Hive,SoilTemp2, Temp2m2,Temp60cm2,Temp10m2, Humidity2,DPTemp2, Rainfall2, WindSp2)
+
+PCA <- na.omit(PCA)
+#sum(is.na(PCA))
+DR1 <- prcomp(PCA[-c(1:3)], center = TRUE, scale = TRUE)
+head(DR1$x)
+#there are my PCs
+PCAscores <- data.frame(SampleDay = PCA$SampleDay, Date=PCA$Date, Hive=PCA$Hive, PC1 = DR1$x[,1], PC2 = DR1$x[,2])
+
+PCA1POV <- DR1$sdev^2/sum(DR1$sdev^2)
+PCA1POV
+
+#PC1 explains 65% of variation
+
+GCols <- c("#999999","#FDB366","#F67E4B","#DD3D2D","#A50026","#999999","#98CAE1", "#6EA6CD", "#4A7BB7", "#364B9A")
+
+SShapes <- c(1,2)
+
+plot(x = PCAscores$PC1, y = PCAscores$PC2, type = 'n', 
+     xlab = paste0('PC1  (',round(PCA1POV[1]*100, digits = 2),'%)'), 
+     ylab = paste0('PC2  (',round(PCA1POV[2]*100, digits = 2),'%)'),
+     main = 'Principal Component Analysis'
+)
+
+for(G in unique(PCAscores$SampleDay)){
+  for(S in unique(PCAscores$Area)){
+    
+    PlotSub <- PCAscores[which(PCAscores$SampleDay == G & PCAscores$Area == S),]
+    
+    TempCol <- GCols[which(unique(PCAscores$SampleDay) == G)]
+    
+    TempShape <- SShapes[which(unique(PCAscores$Area) == S)]
+    
+    points(x = PlotSub$PC1, y = PlotSub$PC2, col = TempCol, pch = TempShape, lwd = 2, cex = 1.5)
+    
+  }
+}
+
+modelPCA <- lmer(PC1 ~ SampleDay + (1|Colony), data = PCAscores)
+PCAm <- anova(modelPCA, test = "F")
+PCAm
+
+```
+
+```{r}
+BC1 <- subset(BeeCounts, Treatment != "CControl")
+BCD3 <- subset(BC1, SampleDay == 3)
+
+BCs <- glmer(Bees ~ Treatment + (1|Area), family=poisson(link="log"), data= BCD3)
+BCs
+Anova(BCs)
+summary(BCs)
+
+lsm<-lsmeans (BCs, list( ~ Treatment + SampleDay))
+cld(lsm)
+
+```
+
+
+##Dye Visuals Significance
+```{r}
+DVw <- glm(Visual1 ~ Radiation , family=binomial(link="logit"), data= DV1)
+Anova(DVw) 
+
+png("Humidity.png", width=6, height=6, units="in", res=400)
+plot(DV1$Humidity,DV1$Temp2m,
+     xlab="Humidity", ylab="Dye Visualized", pch=19,
+     abline(lm(DV1$Temp2m~DV1$Humidity), col="red"))
+dev.off()
+
+DVw <- glm(Visual1 ~ Temp2m , family=binomial(link="logit"), data= DV1)
+anova(DVw, test = 'Chisq')
+
+png("Temperature.png", width=6, height=6, units="in", res=400)
+plot(DV1$Temp2m,DV1$Visual1,
+     xlab="Temperature", ylab="Dye Visualized", pch=19,
+     abline(lm(DV1$Visual1~DV1$Temp2m), col="red"))
+dev.off()
+
+DV <- subset(DyeVisuals, Visual1>-1)
+tgcDVV1 <- summarySE(DV, measurevar = "Visual1", groupvars = c("Treatment", "SampleDay"))
+DV1 <- subset(DV, Treatment == "treatment")
+
+library(brglm2)
+DVs <- glm(Visual1 ~ Temp2m + Treatment + Hive, family=binomial(link="logit"), data= DyeVisuals, method=brglmFit)
+Anova(DVs)
+DVs
+newdat <- subset(DV, abs(resid(DVs, "pearson"))<10)
+DVs2 <- update(DVs, data=newdat)
+
+library(blme)
+DVs_blme <- bglmer(Visual1~Treatment * SampleDay +(1|Hive),data=newdat,
+                       family=binomial,
+                       fixef.prior = normal(cov = diag(9,4)))
+
+library(MCMCglmm)
+cmod_MG2 <- MCMCglmm(Visual1~Treatment * SampleDay,
+                    random=~Hive,data=newdat,
+                    family="categorical",verbose=FALSE,
+                    nitt=13e4,burnin=3e4,thin=50,
+                    prior=c(prior.c,
+                        list(B=list(mu=rep(0,4),
+                           V=diag(9,4)))))
+
+Anova(DVs)
+summary(DVs)
+
+lsm<-lsmeans (DVs, list( ~ Treatment))
+cld(lsm)
+
+DV1 <- subset(DyeVisuals, Treatment=="treatment")
+DV1$SampleDay <- as.factor(DV1$SampleDay)
+DVs <- mixed(Visual1 ~ Temp2m + Humidity + SampleDay  + (1|Hive), family=binomial(link="logit"), data= DV1, method="LRT")
+DVs 
+Anova(DVs)
+summary(DVs)
+
+lsm<-lsmeans (DVs, list( ~ SampleDay))
+cld(lsm)
+
+library(visreg)
+
+png("DyeVisualVis.png", width=6, height=6, units="in", res=400)
+visreg(DVs, "SampleDay")
+dev.off()
+```
+
+```{r}
+
+Plot <- data.frame(Time=c("1", "2", "3", "4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28"), CControl = rep(0,28), NControl = tgcDVV1[c(28:55), "Visual1"], 
+                   PControl = tgcDVV1[c(56:83), "Visual1"], Treatment = tgcDVV1[c(84:111), "Visual1"])
+Plot
+
+png("DyeVisualized.png", width=6, height=6, units="in", res=400)
+plot(.8:27.8, Plot[,2], xaxt="n", ylim=c(0,1), xlim=c(.6,28.4), type="b", pch=16, col="blue", xlab="Time", ylab="Proportion of Bees with Dye", cex=1.5, lty=4, cex.lab=1.5, lwd=2)
+lines(.9:27.9, Plot[,3], pch=17, col="darkgreen", type="b", cex=1.5,lty=5, lwd=2)
+lines(1.0:28.0, Plot[,4], pch=15, col="black", type="b", cex=1.5,lty=6, lwd=2)
+lines(1.1:28.1, Plot[,5], pch=18, col="red", type="b", cex=1.5,lty=7, lwd=2)
+axis(1, 1:28, labels=c("1", "2", "3", "4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28"))
+arrows(.8:27.8, Plot[,2]-rep(0,28), .8:27.8, Plot[,2]+rep(0,28), code=3, angle=90, length=0.05, lwd=2, col="blue")
+arrows(.9:27.9, Plot[,3]-tgcDVV1[c(28:55),"se"], .9:27.9, Plot[,3]+tgcDVV1[c(28:55), "se"], code=3, angle=90, length=0.05, lwd=2, col="darkgreen")
+arrows(1.0:28.0, Plot[,4]-tgcDVV1[c(56:83),"se"], 1.0:28.0, Plot[,4]+tgcDVV1[c(56:83), "se"], code=3, angle=90, length=0.05, lwd=2, col="black")
+arrows(1.1:28.1, Plot[,5]-tgcDVV1[c(84:111),"se"], 1.1:28.1, Plot[,5]+tgcDVV1[c(84:111), "se"], code=3, angle=90, length=0.05, lwd=2, col="red")
+dev.off()
+```
+
+```{r}
+tgcDVV <- summarySE(DV, measurevar = "Visual1", groupvars = c("Treatment"))
+
+png("DyeVisualsRX.png", width=6, height=6, units="in", res=400)
+plot(1:4, tgcDVV[,3], xaxt="n", ylim=c(0,1), xlim=c(1,4), type="b", pch=16, col="blue", xlab="Treatment", ylab="Proportion of bees with dye", cex=1.5, lty=0, cex.lab=1.5, lwd=2)
+axis(1, 1:4, labels=c("Consump. Ctrl", "Neg. Ctrl", "Pos. Ctrl", "AP23"))
+arrows(1:4, tgcDVV[,3]-tgcDVV[c(1:4),"ci"], 1:4, tgcDVV[,3]+tgcDVV[c(1:4), "ci"], code=3, angle=90, length=0.05, lwd=2, col="blue")
+dev.off()
+
+```
+
